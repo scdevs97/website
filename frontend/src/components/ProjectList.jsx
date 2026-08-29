@@ -1,24 +1,6 @@
-import { useEffect, useState } from 'react'
-import { fetchProjects } from '../api'
+import projects from '../data/projects.json'
 
 export default function ProjectList() {
-  const [projects, setProjects] = useState([])
-  const [status, setStatus] = useState('loading') // 'loading' | 'ready' | 'error'
-
-  useEffect(() => {
-    fetchProjects()
-      .then((data) => {
-        setProjects(data)
-        setStatus('ready')
-      })
-      .catch(() => setStatus('error'))
-  }, [])
-
-  if (status === 'loading') return <p>Loading projects…</p>
-  if (status === 'error') {
-    return <p>Couldn't reach the API. Is the Spring Boot backend running on :8080?</p>
-  }
-
   return (
     <ul className="project-list">
       {projects.map((project) => (

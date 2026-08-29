@@ -1,49 +1,50 @@
 # sczhao.me
 
-Personal site — built to learn Spring Boot + Maven + React (the stack used at work).
+Personal site. Two independent pieces that do **not** depend on each other:
 
-- `backend/` — Spring Boot + Maven REST API (in-memory data for now)
-- `frontend/` — React app built with Vite
+- `frontend/` — React + Vite static site. This is what `sczhao.me` serves (Cloudflare Pages). Project data is a static file, no API calls.
+- `backend/` — Spring Boot + Maven REST API. A standalone learning project for the work stack (Spring Boot + Maven + React). Not wired into the live site yet.
 
-## Run it locally
+## Frontend
 
-**Backend** (needs Java 21 + Maven installed, or just run `WebsiteApplication` from your IDE):
-```bash
-cd backend
-mvn spring-boot:run
-```
-No Maven installed? `mvn -N io.takari:maven:wrapper` (run once, needs Maven itself) or simplest: open the `backend/` folder in IntelliJ/VS Code and run `WebsiteApplication.java` directly — both handle dependencies for you.
-Runs on http://localhost:8080. Try http://localhost:8080/api/projects.
+Needs Node 20 (via `mise`, see `mise.toml`).
 
-**Frontend** (needs Node 18+):
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run dev      # http://localhost:5173
+npm run build    # outputs frontend/dist/
+npm run preview  # serve the built site
 ```
-Runs on http://localhost:5173 and proxies `/api/*` calls to the backend (see `vite.config.js`), so no CORS issues in dev.
 
-## Push to GitHub
+Projects are edited in `src/data/projects.json`.
 
-From the root of this project:
+### Deploy (Cloudflare Pages)
+
+1. Cloudflare dashboard → Workers & Pages → Create → Pages → connect `scdevs97/website`.
+2. Build settings:
+   - Root directory: `frontend`
+   - Build command: `npm run build`
+   - Output directory: `dist`
+3. Pages project → Custom domains → add `sczhao.me`. Cloudflare creates the DNS record automatically.
+
+Every push to `main` redeploys.
+
+## Backend
+
+Needs Java 21 + Maven (via `mise`).
+
 ```bash
-git init
-git add .
-git commit -m "Initial scaffold: Spring Boot backend + React frontend"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
+cd backend
+mvn spring-boot:run      # http://localhost:8080/api/projects
+mvn clean package        # target/website-0.1.0.jar
 ```
 
-## Deploying
+In-memory data (`ProjectService`), resets on restart. CRUD at `/api/projects`.
 
-- **Frontend**: `npm run build` in `frontend/` produces `frontend/dist/`. Deploy that to GitHub Pages, Vercel, or Netlify, and point `sczhao.me`'s DNS at it.
-- **Backend**: Spring Boot needs a real runtime (not GitHub Pages). Railway or Render both deploy straight from a GitHub repo and have free/hobby tiers — point them at the `backend/` folder. Once deployed, set the frontend's `VITE_API_BASE_URL` env var to the backend's URL (e.g. `https://api.sczhao.me`) and add that same URL to `allowedOrigins` in `CorsConfig.java`.
-- Consider a subdomain like `api.sczhao.me` (CNAME record) pointed at your backend host, separate from the apex domain serving the frontend.
+### Roadmap
 
-## Next steps as you learn
-
-1. Swap the in-memory `ProjectService` for a JPA repository (start with H2, move to Postgres).
-2. Add a `/api/contact` endpoint with email sending (e.g. via Spring Mail).
+1. Swap in-memory `ProjectService` for JPA + Postgres.
+2. Add auth and a real domain (see notes on project ideas — e.g. a personal API aggregator).
 3. Add tests (`spring-boot-starter-test` is already included).
-4. Add a build/deploy GitHub Action so pushes to `main` auto-deploy both sides.
+4. Deploy to Railway at `api.sczhao.me`, then optionally point the frontend at it.
