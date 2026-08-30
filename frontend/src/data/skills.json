@@ -1,0 +1,10 @@
+[
+  {
+    "group": "Languages",
+    "items": ["C#", "SQL", "JavaScript / TypeScript", "Python", "Java", "C / C++", "Kotlin", "R", "Bash"]
+  },
+  {
+    "group": "Frameworks & Tools",
+    "items": ["Apache Hadoop", ".NET", "Microsoft SQL Server", "React", "Node.js", "Django", "Firebase", "Jest", "Cypress"]
+  }
+]

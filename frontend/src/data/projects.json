@@ -1,16 +1,9 @@
 [
   {
     "id": 1,
-    "title": "Personal Website",
-    "description": "This site — a React portfolio on Cloudflare Pages, with a separate Spring Boot service being built as a learning project.",
-    "url": "https://sczhao.me",
-    "tags": ["react", "vite", "cloudflare-pages"]
-  },
-  {
-    "id": 2,
-    "title": "Another Project",
-    "description": "Replace me with a real project.",
-    "url": "https://github.com/scdevs97",
-    "tags": ["example"]
+    "title": "This website",
+    "description": "A React + Vite portfolio deployed on Cloudflare Pages, with a decoupled Spring Boot service being built alongside it to explore the backend stack.",
+    "url": "https://github.com/scdevs97/website",
+    "tags": ["react", "vite", "spring-boot", "cloudflare-pages"]
   }
 ]
