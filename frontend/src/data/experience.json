@@ -1,0 +1,49 @@
+[
+  {
+    "role": "Senior Software Engineer",
+    "company": "Mastercard",
+    "location": "Atlanta, GA",
+    "start": "May 2024",
+    "end": "Present",
+    "highlights": [
+      "Migrated 100+ terabyte-scale SQL Server databases to Hadoop within a year, with new ETL pipelines for daily incremental loads.",
+      "Ran bi-weekly Hadoop training across cross-functional teams to accelerate adoption and retire end-of-life SQL Server infrastructure.",
+      "Coordinated four teams on Ranger policies and Hadoop resource pools for secure access and equitable resource usage.",
+      "Mentor two junior engineers through regular 1:1s, task delegation, and technical guidance."
+    ]
+  },
+  {
+    "role": "Software Engineer II",
+    "company": "Mastercard",
+    "location": "Boston, MA",
+    "start": "Aug 2022",
+    "end": "May 2024",
+    "highlights": [
+      "Led department-wide adoption of the Hadoop ecosystem — Apache Sqoop for SQL Server–to-HDFS ingestion, refactoring legacy code for Apache Impala.",
+      "Cut complex analytical query times by up to 60% by moving workloads from SQL Server to Impala, resolving a major client pain point.",
+      "Ran brown-bag sessions upskilling 50+ engineers on advanced SQL Server topics like columnstore indexes and query optimization."
+    ]
+  },
+  {
+    "role": "Software Engineer I",
+    "company": "Mastercard",
+    "location": "Arlington, VA",
+    "start": "Aug 2021",
+    "end": "Aug 2022",
+    "highlights": [
+      "Led performance investigations into analytical pipeline bottlenecks via deep .NET log analysis, improving client load times by 20%.",
+      "Built an internal React tool to surface and explain privacy-violating data points, cutting support diagnosis time from over an hour to minutes."
+    ]
+  },
+  {
+    "role": "Front-End Web Developer Intern",
+    "company": "Ninja Van",
+    "location": "Singapore",
+    "start": "May 2019",
+    "end": "Aug 2019",
+    "highlights": [
+      "Shipped UI features for a corporate site serving 10,000+ daily users across Asia, using Gatsby and styled-components.",
+      "Raised code coverage 25% with new Jest unit tests and Cypress end-to-end tests."
+    ]
+  }
+]

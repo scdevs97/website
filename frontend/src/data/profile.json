@@ -1,0 +1,11 @@
+{
+  "name": "Shi Chong Zhao",
+  "tagline": "Full-stack software engineer working on business intelligence",
+  "location": "Atlanta, GA",
+  "blurb": "Senior Software Engineer at Mastercard on the business intelligence platform. Most of my work is data infrastructure — migrating terabyte-scale SQL Server workloads to Hadoop, building ETL pipelines, and the internal tools around them. Earlier on, full-stack and front-end work in React and .NET.",
+  "links": {
+    "email": "sz329@cornell.edu",
+    "github": "https://github.com/scdevs97",
+    "linkedin": "https://www.linkedin.com/in/shichong97/"
+  }
+}

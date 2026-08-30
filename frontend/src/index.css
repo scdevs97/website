@@ -1,53 +1,273 @@
 :root {
   color-scheme: light dark;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  --bg: #0f1115;
+  --surface: #16181d;
+  --border: #262a31;
+  --text: #e8eaed;
+  --muted: #9aa3af;
+  --accent: #7c9cff;
+
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --measure: 40rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --surface: #f6f7f9;
+    --border: #e4e7ec;
+    --text: #1a1d21;
+    --muted: #5b636e;
+    --accent: #3355dd;
+  }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #0f1115;
-  color: #eaeaea;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .page {
-  max-width: 720px;
+  max-width: var(--measure);
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 4.5rem 1.5rem 3rem;
 }
 
-header h1 {
-  margin-bottom: 0.25rem;
+/* Intro */
+
+.intro h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
 }
+
+.tagline {
+  margin: 0.4rem 0 0.25rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.location {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.blurb {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+}
+
+.links {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.95rem;
+}
+
+/* Sections */
+
+section {
+  margin-top: 3rem;
+}
+
+section h2 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Experience timeline */
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+}
+
+.timeline-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.timeline-role {
+  font-weight: 600;
+}
+
+.timeline-dates {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-sub {
+  margin-top: 0.15rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.timeline-highlights {
+  margin: 0.7rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.timeline-highlights li {
+  padding-left: 0.2rem;
+}
+
+.timeline-highlights li::marker {
+  color: var(--border);
+}
+
+/* Projects */
 
 .project-list {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: grid;
   gap: 1rem;
 }
 
 .project-card {
-  border: 1px solid #2a2d34;
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 1rem 1.25rem;
-  background: #16181d;
+  background: var(--surface);
 }
 
 .project-card h3 {
   margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+
+.project-card p {
+  margin: 0 0 0.6rem;
+  color: var(--muted);
 }
 
 .tags {
-  margin-top: 0.6rem;
+  margin-top: 0.7rem;
   display: flex;
   gap: 0.4rem;
   flex-wrap: wrap;
 }
 
 .tag {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   padding: 0.15rem 0.5rem;
   border-radius: 999px;
-  background: #23262e;
-  color: #a9b1bd;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+/* Skills */
+
+.skills {
+  margin: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.skill-group dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.skill-group dd {
+  margin: 0;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+/* Education */
+
+.edu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.edu-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.edu-school {
+  font-weight: 600;
+}
+
+.edu-year {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.edu-credential {
+  flex-basis: 100%;
+  margin-top: 0.15rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Footer */
+
+.foot {
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--muted);
 }
