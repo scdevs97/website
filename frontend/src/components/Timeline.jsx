@@ -1,6 +1,6 @@
 import experience from '../data/experience.json'
 
-export default function Experience() {
+export default function Timeline() {
   return (
     <ul className="timeline">
       {experience.map((job) => (
