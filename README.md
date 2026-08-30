@@ -2,7 +2,7 @@
 
 Personal site. Two independent pieces that do **not** depend on each other:
 
-- `frontend/` — React + Vite static site. This is what `sczhao.me` serves (Cloudflare Pages). Project data is a static file, no API calls.
+- `frontend/` — React + Vite + react-router static site. This is what `sczhao.me` serves (Cloudflare Pages). All content is static JSON, no API calls.
 - `backend/` — Spring Boot + Maven REST API. A standalone learning project for the work stack (Spring Boot + Maven + React). Not wired into the live site yet.
 
 ## Frontend
@@ -17,7 +17,7 @@ npm run build    # outputs frontend/dist/
 npm run preview  # serve the built site
 ```
 
-Projects are edited in `src/data/projects.json`.
+Content is edited in `src/data/*.json` (`profile`, `experience`, `education`, `skills`, `projects`) — no component changes needed. Pages: `/` (bio), `/experience`, `/projects`. `public/_redirects` handles SPA deep links on Cloudflare.
 
 ### Deploy (Cloudflare Pages)
 
@@ -27,8 +27,9 @@ Projects are edited in `src/data/projects.json`.
    - Build command: `npm run build`
    - Output directory: `dist`
 3. Pages project → Custom domains → add `sczhao.me`. Cloudflare creates the DNS record automatically.
+4. Set the Pages production branch to `production`.
 
-Every push to `main` redeploys.
+Work on `main` (preview deploys); release with a PR `main → production`, which deploys `sczhao.me`.
 
 ## Backend
 
